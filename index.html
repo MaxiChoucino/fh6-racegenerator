@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Generador random de auto y carrera para Forza Horizon 6.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>FH6 Random</title>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <p class="eyebrow">FORZA HORIZON 6</p>
+        <h1>Random Drive</h1>
+      </div>
+      <button id="installBtn" class="icon-btn hidden" aria-label="Instalar app" title="Instalar app">＋</button>
+    </header>
+
+    <div id="status" class="status">Cargando autos…</div>
+
+    <section class="card">
+      <span class="label">AUTO</span>
+      <h2 id="carName">—</h2>
+      <div class="actions two">
+        <button id="newCarBtn" class="secondary">Otro auto</button>
+        <button id="dontHaveBtn" class="danger">No lo tengo</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <span class="label">CARRERA</span>
+      <h2 id="raceName">—</h2>
+      <button id="newRaceBtn" class="secondary full">Otra carrera</button>
+    </section>
+
+    <button id="newBothBtn" class="primary full big">Cambiar ambos</button>
+
+    <div class="bottom-row">
+      <button id="manageBtn" class="link-btn">Autos excluidos: <strong id="excludedCount">0</strong></button>
+      <button id="refreshBtn" class="link-btn">Actualizar autos</button>
+    </div>
+
+    <p class="footnote">Los autos se actualizan desde una lista online y quedan guardados en el teléfono para reutilizarlos.</p>
+  </main>
+
+  <dialog id="manageDialog">
+    <div class="dialog-head">
+      <div>
+        <p class="eyebrow">MI GARAJE</p>
+        <h3>Autos excluidos</h3>
+      </div>
+      <button id="closeDialogBtn" class="icon-btn" aria-label="Cerrar">×</button>
+    </div>
+    <div id="excludedList" class="excluded-list"></div>
+    <div class="dialog-actions">
+      <button id="restoreAllBtn" class="secondary full">Restaurar todos</button>
+    </div>
+  </dialog>
+
+  <script src="races.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
