@@ -3,66 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0d10">
-  <meta name="description" content="Generador random de auto y carrera para Forza Horizon 6.">
+  <meta name="theme-color" content="#f7f4f2">
+  <meta name="description" content="Elegí al azar tu próximo auto y carrera de Forza Horizon 6. Fotos de los autos y ubicaciones en el mapa de Japón.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css">
-  <title>FH6 Random</title>
+  <title>Random Drive · Forza Horizon 6</title>
 </head>
 <body>
   <main class="app">
-    <header>
-      <div>
-        <p class="eyebrow">FORZA HORIZON 6</p>
-        <h1>Random Drive</h1>
+    <header class="app-header">
+      <a class="brand" href="./" aria-label="Random Drive, inicio">
+        <span class="brand-mark" aria-hidden="true">FH<span>6</span></span>
+        <span class="brand-title">RANDOM DRIVE<span>FORZA HORIZON 6</span></span>
+      </a>
+      <div class="header-actions">
+        <span class="destination"><span class="japan-dot" aria-hidden="true"></span> JAPÓN</span>
+        <button id="installBtn" class="icon-btn hidden" aria-label="Instalar app" title="Instalar app">＋</button>
       </div>
-      <button id="installBtn" class="icon-btn hidden" aria-label="Instalar app" title="Instalar app">＋</button>
     </header>
 
-    <div id="status" class="status">Cargando autos…</div>
-
-    <section class="card">
-      <span class="label">AUTO</span>
-      <h2 id="carName">—</h2>
-      <div class="actions two">
-        <button id="newCarBtn" class="secondary">Otro auto</button>
-        <button id="dontHaveBtn" class="danger">No lo tengo</button>
+    <section class="hero" aria-labelledby="heroTitle">
+      <img class="hero-image" src="assets/fh6-cover.webp" alt="Forza Horizon 6 en Japón" fetchpriority="high">
+      <div class="hero-content">
+        <p class="eyebrow"><span aria-hidden="true"></span> TU PRÓXIMA AVENTURA</p>
+        <h1 id="heroTitle">El azar elige.<br>Vos manejás.</h1>
+        <p>Un auto. Una carrera. Todo Japón por descubrir.</p>
       </div>
+      <span class="hero-caption">HORIZON JAPAN / 06</span>
     </section>
 
-    <section class="card">
-      <span class="label">CARRERA</span>
-      <h2 id="raceName">—</h2>
-      <button id="newRaceBtn" class="secondary full">Otra carrera</button>
-    </section>
+    <div class="selection-heading">
+      <h2>Tu próxima salida</h2>
+      <div id="status" class="status" role="status" aria-live="polite">Cargando autos…</div>
+    </div>
 
-    <button id="newBothBtn" class="primary full big">Cambiar ambos</button>
+    <div class="selection-grid">
+      <section class="card car-card" aria-labelledby="carName">
+        <div class="card-heading">
+          <span class="label"><span class="step-number">01</span> TU AUTO</span>
+          <span class="card-kicker">EL GARAJE</span>
+        </div>
+        <div class="car-media">
+          <img id="carImage" class="car-image" alt="" hidden>
+          <div id="carImageStatus" class="media-placeholder" role="status" aria-live="polite">Buscando tu próximo auto…</div>
+        </div>
+        <div class="card-content">
+          <div class="selection-copy">
+            <h3 id="carName">—</h3>
+            <p id="carDetail" class="detail">Preparando el garaje</p>
+          </div>
+          <a id="carPhotoCredit" class="photo-credit" target="_blank" rel="noopener noreferrer" hidden></a>
+          <div class="actions two">
+            <button id="newCarBtn" class="secondary">Otro auto <span aria-hidden="true">↗</span></button>
+            <button id="dontHaveBtn" class="danger">No lo tengo</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card race-card" aria-labelledby="raceName">
+        <div class="card-heading">
+          <span class="label"><span class="step-number">02</span> TU CARRERA</span>
+          <span id="raceType" class="type-badge">JAPÓN</span>
+        </div>
+        <div id="raceMapFrame" class="race-map-frame">
+          <img id="raceMapImage" class="race-map-image" src="assets/fh6-map.jpg" alt="Mapa de Japón en Forza Horizon 6">
+          <span id="raceMapMarker" class="map-marker" role="img" aria-label="Ubicación de la carrera" hidden><span></span></span>
+          <button id="expandMapBtn" class="map-expand" aria-label="Ampliar mapa" title="Ampliar mapa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6"/></svg>
+          </button>
+          <span class="map-caption">MAPA DE HORIZON</span>
+        </div>
+        <div class="card-content">
+          <div class="selection-copy">
+            <h3 id="raceName">—</h3>
+            <p id="raceMapStatus" class="detail" role="status" aria-live="polite">Buscando tu próximo destino…</p>
+          </div>
+          <a id="raceMapLink" class="photo-credit map-link" target="_blank" rel="noopener noreferrer" hidden>Ver en el mapa interactivo <span aria-hidden="true">↗</span></a>
+          <button id="newRaceBtn" class="secondary full">Otra carrera <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+    </div>
+
+    <button id="newBothBtn" class="primary full big">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h3c5 0 7 12 12 12h3M3 18h3c2 0 3.5-2 5-5m2-2c1.5-3 3-5 5-5h3m-4-4 4 4-4 4m0 4 4 4-4 4"/></svg>
+      Cambiar ambos
+      <span class="button-hint">QUE DECIDA EL AZAR</span>
+    </button>
 
     <div class="bottom-row">
-      <button id="manageBtn" class="link-btn">Autos excluidos: <strong id="excludedCount">0</strong></button>
-      <button id="refreshBtn" class="link-btn">Actualizar autos</button>
+      <button id="manageBtn" class="link-btn">Autos excluidos <strong id="excludedCount">0</strong></button>
+      <button id="refreshBtn" class="link-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 6.1a8.3 8.3 0 0 1 13.4 3M4.5 14.9a8.3 8.3 0 0 0 13.4 3"/></svg>Actualizar autos</button>
     </div>
 
-    <p class="footnote">Los autos se actualizan desde una lista online y quedan guardados en el teléfono para reutilizarlos.</p>
+    <footer class="app-footer">
+      <p>Tu garaje queda guardado en este dispositivo.</p>
+      <p>App de fans no oficial · <a href="https://forza.net/media" target="_blank" rel="noopener noreferrer">Imágenes de Forza Horizon 6</a></p>
+    </footer>
   </main>
 
-  <dialog id="manageDialog">
+  <dialog id="manageDialog" aria-labelledby="manageDialogTitle">
     <div class="dialog-head">
-      <div>
-        <p class="eyebrow">MI GARAJE</p>
-        <h3>Autos excluidos</h3>
-      </div>
-      <button id="closeDialogBtn" class="icon-btn" aria-label="Cerrar">×</button>
+      <div><p class="eyebrow">MI GARAJE</p><h2 id="manageDialogTitle">Autos excluidos</h2></div>
+      <button id="closeDialogBtn" class="icon-btn" aria-label="Cerrar autos excluidos">×</button>
     </div>
     <div id="excludedList" class="excluded-list"></div>
-    <div class="dialog-actions">
-      <button id="restoreAllBtn" class="secondary full">Restaurar todos</button>
+    <div class="dialog-actions"><button id="restoreAllBtn" class="secondary full">Restaurar todos</button></div>
+  </dialog>
+
+  <dialog id="mapDialog" class="map-dialog" aria-labelledby="mapDialogTitle">
+    <div class="dialog-head">
+      <div><p class="eyebrow">TU DESTINO EN JAPÓN</p><h2 id="mapDialogTitle">Mapa de la carrera</h2></div>
+      <button id="closeMapBtn" class="icon-btn" aria-label="Cerrar mapa">×</button>
     </div>
+    <div class="map-toolbar" aria-label="Controles del mapa">
+      <button id="mapZoomOut" class="icon-btn" aria-label="Alejar mapa">−</button>
+      <span id="mapZoomLabel" class="map-zoom-label" aria-live="polite">100%</span>
+      <button id="mapZoomIn" class="icon-btn" aria-label="Acercar mapa">+</button>
+      <button id="mapResetBtn" class="secondary map-reset">Ver todo</button>
+    </div>
+    <div id="mapViewport" class="map-viewport" tabindex="0" aria-label="Mapa desplazable">
+      <div id="mapDialogFrame" class="map-dialog-frame">
+        <img id="mapDialogImage" src="assets/fh6-map.jpg" alt="Mapa ampliado de Forza Horizon 6">
+        <span id="mapDialogMarker" class="map-marker" role="img" aria-label="Ubicación de la carrera" hidden><span></span></span>
+      </div>
+    </div>
+    <p class="map-dialog-note">El marcador indica la ubicación de la carrera seleccionada.</p>
   </dialog>
 
   <script src="races.js"></script>
+  <script src="car-photos.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

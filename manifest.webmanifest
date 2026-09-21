@@ -1,11 +1,13 @@
 {
   "name": "FH6 Random Drive",
   "short_name": "FH6 Random",
-  "description": "Auto y carrera random para Forza Horizon 6.",
+  "description": "Elegí tu próxima aventura en Forza Horizon 6: auto con foto y carrera con ubicación en el mapa.",
+  "id": "./",
+  "lang": "es",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#0b0d10",
-  "theme_color": "#0b0d10",
+  "background_color": "#f7f4f2",
+  "theme_color": "#f7f4f2",
   "icons": [
     {
       "src": "icons/icon-192.png",
