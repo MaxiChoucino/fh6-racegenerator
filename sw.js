@@ -1,8 +1,9 @@
 const PREFIX = "fh6-random-";
-const CACHE = `${PREFIX}v3`;
+const CACHE = `${PREFIX}v5`;
 const PHOTOS = `${PREFIX}photos-v1`;
 const CORE = [
-  "./", "./index.html", "./styles.css", "./app.js", "./races.js", "./car-photos.js",
+  "./", "./index.html", "./styles.css", "./app.js", "./races.js", "./car-photos.js", "./catalog-sync.js",
+  "./car-profiles.js", "./car-suitability.js",
   "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon.svg",
   "./assets/fh6-cover.webp", "./assets/fh6-map.jpg"
 ];

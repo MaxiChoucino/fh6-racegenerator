@@ -55,6 +55,11 @@
             <p id="carDetail" class="detail">Preparando el garaje</p>
           </div>
           <a id="carPhotoCredit" class="photo-credit" target="_blank" rel="noopener noreferrer" hidden></a>
+          <div id="carGuidance" class="car-guidance" hidden>
+            <p class="guidance-label">MEJOR ORIENTADO A</p>
+            <div id="carRaceTypes" class="race-affinity-tags"></div>
+            <p class="guidance-note">Estimación de serie. El tuneo, las mejoras y la clase exigida pueden cambiar el resultado.</p>
+          </div>
           <div class="actions two">
             <button id="newCarBtn" class="secondary">Otro auto <span aria-hidden="true">↗</span></button>
             <button id="dontHaveBtn" class="danger">No lo tengo</button>
@@ -81,6 +86,11 @@
             <p id="raceMapStatus" class="detail" role="status" aria-live="polite">Buscando tu próximo destino…</p>
           </div>
           <a id="raceMapLink" class="photo-credit map-link" target="_blank" rel="noopener noreferrer" hidden>Ver en el mapa interactivo <span aria-hidden="true">↗</span></a>
+          <div id="raceFit" class="race-fit" role="status" aria-live="polite" hidden>
+            <p class="guidance-label">CON TU AUTO ACTUAL</p>
+            <strong id="raceFitTitle"></strong>
+            <p id="raceFitReason"></p>
+          </div>
           <button id="newRaceBtn" class="secondary full">Otra carrera <span aria-hidden="true">↗</span></button>
         </div>
       </section>
@@ -94,8 +104,19 @@
 
     <div class="bottom-row">
       <button id="manageBtn" class="link-btn">Autos excluidos <strong id="excludedCount">0</strong></button>
-      <button id="refreshBtn" class="link-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 6.1a8.3 8.3 0 0 1 13.4 3M4.5 14.9a8.3 8.3 0 0 0 13.4 3"/></svg>Actualizar autos</button>
+      <button id="refreshBtn" class="link-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 6.1a8.3 8.3 0 0 1 13.4 3M4.5 14.9a8.3 8.3 0 0 0 13.4 3"/></svg>Actualizar datos</button>
     </div>
+
+    <section class="sync-panel" aria-labelledby="syncTitle">
+      <h2 id="syncTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg>Actualización automática cada 6 horas</h2>
+      <p id="syncStatus" class="sync-status" role="status" aria-live="polite">Consultando autos y carreras…</p>
+      <div class="sync-times">
+        <span id="carsSyncTime">Autos: todavía sin consultar</span>
+        <span id="racesSyncTime">Carreras: todavía sin consultar</span>
+      </div>
+      <p class="sync-note">Las novedades se incorporan cuando las fuentes las publican.</p>
+      <p class="sync-sources">Fuentes: <a href="https://github.com/Hx-zh/fh6-livery-viewer" target="_blank" rel="noopener noreferrer">FH6 Livery Viewer</a> · <a href="https://github.com/pixelswiftali/forzadata" target="_blank" rel="noopener noreferrer">forzadata</a> · <a href="https://forza.labsgg.com/interactive-map" target="_blank" rel="noopener noreferrer">ForzaLabs</a></p>
+    </section>
 
     <footer class="app-footer">
       <p>Tu garaje queda guardado en este dispositivo.</p>
@@ -134,6 +155,9 @@
 
   <script src="races.js"></script>
   <script src="car-photos.js"></script>
+  <script src="car-profiles.js"></script>
+  <script src="car-suitability.js"></script>
+  <script src="catalog-sync.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
